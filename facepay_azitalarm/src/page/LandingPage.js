@@ -11,7 +11,7 @@ const LandingPage = () => {
 
   // 1초마다 fetchLatestPayment 실행
   useEffect(() => {
-    if ('Notification' in window && Notification.permission !== 'granted') {
+    if ("Notification" in window && Notification.permission !== "granted") {
       Notification.requestPermission();
     }
 
@@ -50,7 +50,10 @@ const LandingPage = () => {
 
         // is_done이 true가 되면 알림 전송
         if (isWatching && paymentData.is_done === true) {
-          if ('Notification' in window && Notification.permission === 'granted') {
+          if (
+            "Notification" in window &&
+            Notification.permission === "granted"
+          ) {
             // 소리 재생
             const audio = new Audio(notificationSound);
             audio.play(); // 알림과 함께 소리 재생
@@ -85,6 +88,15 @@ const LandingPage = () => {
             <p>Is Done: {latestPayment.is_done ? "Yes" : "No"}</p>
           </div>
         )}
+        <button
+          onClick={() => {
+            const audio = new Audio(notificationSound);
+            audio.play();
+          }}
+          className={styles.refreshButton}
+        >
+          test
+        </button>
       </div>
     </div>
   );
