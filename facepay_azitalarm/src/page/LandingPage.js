@@ -11,6 +11,10 @@ const LandingPage = () => {
 
   // 1초마다 fetchLatestPayment 실행
   useEffect(() => {
+    if ('Notification' in window && Notification.permission !== 'granted') {
+      Notification.requestPermission();
+    }
+
     const intervalId = setInterval(fetchLatestPayment, 1000); // 1초마다 실행
     return () => clearInterval(intervalId); // 컴포넌트가 unmount될 때 interval을 정리
   }, [isWatching]);
@@ -46,8 +50,11 @@ const LandingPage = () => {
 
         // is_done이 true가 되면 알림 전송
         if (isWatching && paymentData.is_done === true) {
-          const audio = new Audio(notificationSound);
-          audio.play(); // 알림과 함께 소리 재생
+          if ('Notification' in window && Notification.permission === 'granted') {
+            // 소리 재생
+            const audio = new Audio(notificationSound);
+            audio.play(); // 알림과 함께 소리 재생
+          }
           setIsWatching(false); // 알림을 보낸 후 감시 중단
           console.log("Payment is done!");
         }
