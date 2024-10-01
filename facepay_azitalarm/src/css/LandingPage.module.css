@@ -1,0 +1,16 @@
+.askStartButton {
+  background-color: white;
+  color: #000000;
+  border: none;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.invisible {
+  margin-top: 30px;
+}
+
+.notificationBox {
+  display: none;
+}

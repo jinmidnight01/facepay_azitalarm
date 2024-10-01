@@ -1,0 +1,44 @@
+.header {
+  font-weight: bold;
+  display: flex;
+  width: 88%;
+  margin: 25px auto;
+  font-size: 32px;
+}
+
+.header hr {
+  flex-grow: 1;
+  border: 0.1px solid #000000;
+  margin: auto 0;
+}
+
+.headerLink {
+  text-decoration: none;
+  color: #000000;
+}
+
+.payColor {
+  color: #FF5555;
+}
+
+.headerLeft {
+  margin-right: 25px;
+}
+
+.headerRight {
+  margin-left: 25px;
+}
+
+@media all and (max-width: 600px) {
+  .header {
+    font-size: 21px;
+  }
+
+  .headerLeft {
+    margin-right: 16px;
+  }
+  
+  .headerRight {
+    margin-left: 16px;
+  }
+}
