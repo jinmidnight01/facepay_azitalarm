@@ -20,7 +20,7 @@ const LandingPage = () => {
   }, [isWatching]);
 
   // Button click Function to play audio
-  const onClicked = () => {
+  const startButton = () => {
     document.getElementById("askStartButton").style.display = "none";
     document.getElementById("notificationBox").style.display = "block";
 
@@ -74,10 +74,15 @@ const LandingPage = () => {
       <Header />
 
       <div id="askStartButton" className={styles.askStartButton}>
-        <div>아래 결제 알림 버튼을 눌러주세요</div>
-        <button id="start" onClick={onClicked} className={styles.invisible}>
-          Start
-        </button>
+        <div className={styles.textBox}>
+          <div>아래 버튼을 눌러</div>
+          <div>주문 알림을 받아주세요</div>
+        </div>
+        <div className={styles.buttonBox}>
+          <button id="start" onClick={startButton} className={styles.button}>
+            시작하기
+          </button>
+        </div>
       </div>
 
       <div id="notificationBox" className={styles.notificationBox}>
