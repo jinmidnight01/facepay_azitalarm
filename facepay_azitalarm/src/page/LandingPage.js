@@ -33,14 +33,13 @@ const LandingPage = () => {
     try {
       // 최신 결제 데이터를 가져오는 API 호출
       const response = await axios.get(
-        `${hostURL}/api/payments/latest_payment`
+        `${hostURL}/api/payments/latest_payment/${3}`
       );
       const paymentData = response.data;
 
       // 데이터가 존재하는지 확인한 후에 상태 업데이트
       if (paymentData) {
         setLatestPayment(paymentData);
-        console.log("Latest payment data:", paymentData);
 
         // store_id가 3이고 is_done이 false일 때 상태 설정
         if (paymentData.store_id === 3 && paymentData.is_done === false) {
@@ -76,7 +75,7 @@ const LandingPage = () => {
       <div id="askStartButton" className={styles.askStartButton}>
         <div className={styles.textBox}>
           <div>아래 버튼을 눌러</div>
-          <div>주문 알림을 받아주세요</div>
+          <div><span>주문 알림</span>을 받아주세요</div>
         </div>
         <div className={styles.buttonBox}>
           <button id="start" onClick={startButton} className={styles.button}>
@@ -86,6 +85,8 @@ const LandingPage = () => {
       </div>
 
       <div id="notificationBox" className={styles.notificationBox}>
+        <div>선입금: 200,000원</div>
+        <div>매출: </div>
         <p>가장 최신 결제 정보:</p>
         {latestPayment && (
           <div>
